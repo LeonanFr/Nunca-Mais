@@ -131,29 +131,11 @@ func focus_on(target_focus: CameraFocusPoint) -> void:
 
 	current_focus_id = target_focus.focus_id
 
-	var tween := create_tween()
-	tween.set_parallel(true)
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.set_ease(Tween.EASE_IN_OUT)
-
-	tween.tween_property(
-		camera,
-		"global_position",
+	await _move_camera_to_transform(
 		target_focus.global_position,
-		focus_duration
-	)
-
-	tween.tween_property(
-		camera,
-		"global_rotation",
 		target_focus.global_rotation,
 		focus_duration
 	)
-
-	await tween.finished
-
-	camera.global_position = target_focus.global_position
-	camera.global_rotation = target_focus.global_rotation
 
 	is_moving_camera = false
 
@@ -174,31 +156,41 @@ func exit_focus() -> void:
 
 	current_focus_id = previous_focus_id
 
-	var tween := create_tween()
-	tween.set_parallel(true)
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.set_ease(Tween.EASE_IN_OUT)
-
-	tween.tween_property(
-		camera,
-		"global_position",
+	await _move_camera_to_transform(
 		previous_position,
-		focus_duration
-	)
-
-	tween.tween_property(
-		camera,
-		"global_rotation",
 		previous_rotation,
 		focus_duration
 	)
 
+	is_moving_camera = false
+
+func _move_camera_to_transform(target_position: Vector3, target_rotation: Vector3, duration: float) -> void:
+	var start_position: Vector3 = camera.global_position
+	var start_rotation: Vector3 = camera.global_rotation
+
+	var tween := create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
+
+	tween.tween_method(
+		func(weight: float) -> void:
+			camera.global_position = start_position.lerp(target_position, weight)
+
+			var new_rotation: Vector3 = Vector3.ZERO
+			new_rotation.x = lerp_angle(start_rotation.x, target_rotation.x, weight)
+			new_rotation.y = lerp_angle(start_rotation.y, target_rotation.y, weight)
+			new_rotation.z = lerp_angle(start_rotation.z, target_rotation.z, weight)
+
+			camera.global_rotation = new_rotation,
+		0.0,
+		1.0,
+		duration
+	)
+
 	await tween.finished
 
-	camera.global_position = previous_position
-	camera.global_rotation = previous_rotation
-
-	is_moving_camera = false
+	camera.global_position = target_position
+	camera.global_rotation = target_rotation
 
 func can_focus_id(target_focus_id: StringName) -> bool:
 	if not focus_points_by_id.has(target_focus_id):
