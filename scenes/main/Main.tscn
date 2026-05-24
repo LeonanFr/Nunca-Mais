@@ -288,8 +288,6 @@ path_markers = [NodePath("../../RavenPath/RavenPath1"), NodePath("../../RavenPat
 bust_target_marker = NodePath("../../RavenPath/RavenBustTarget")
 fragment_paper = NodePath("../../BookTableArea/FragmentPaperCrow")
 segment_durations = Array[float]([0.75, 1.35, 1.9])
-debug_enabled = true
-debug_force_state_on_ready = true
 
 [node name="RavenRitualController" type="Node3D" parent="World/GameplayObjects/PuzzleControllers" unique_id=1747542956 node_paths=PackedStringArray("panel")]
 script = ExtResource("18_04n4k")

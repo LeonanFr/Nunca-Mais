@@ -1,3 +1,20 @@
-# Godot 4+ specific ignores
 .godot/
-/android/
+*.translation
+
+/export/
+/exports/
+/build/
+/builds/
+/dist/
+
+*.tmp
+*.bak
+*.old
+*.zip
+*.rar
+*.7z
+*.exe
+*.pck
+
+.DS_Store
+Thumbs.db

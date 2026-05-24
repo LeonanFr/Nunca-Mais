@@ -13,6 +13,8 @@ config_version=5
 config/name="NuncaMais"
 run/main_scene="uid://cx2ce1ew2c2kn"
 config/features=PackedStringArray("4.6", "Forward Plus")
+config/icon="uid://c77crlpxvbj1j"
+config/windows_native_icon="res://assets/textures/raven.ico"
 
 [autoload]
 
