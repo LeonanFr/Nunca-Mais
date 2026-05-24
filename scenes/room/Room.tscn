@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://bkxv5j77bseeo"]
+
+[ext_resource type="PackedScene" uid="uid://djnasdatqsuj7" path="res://scenes/room/ClearWall.scn" id="1_rsjo3"]
+[ext_resource type="PackedScene" uid="uid://bh48k8tm7urfv" path="res://scenes/room/LongWindowWall.scn" id="2_trp6l"]
+[ext_resource type="PackedScene" uid="uid://cage76rfm8dgi" path="res://scenes/room/DoorWall.scn" id="3_w0s24"]
+[ext_resource type="PackedScene" uid="uid://bqwn8e6au1710" path="res://scenes/room/DoorBricks.scn" id="4_fc6bp"]
+[ext_resource type="PackedScene" uid="uid://bunqqx4hedmik" path="res://scenes/room/PuzzleFurniture/Door.scn" id="5_ltby2"]
+[ext_resource type="PackedScene" uid="uid://cwnscnvd1e3aw" path="res://scenes/room/WindowBricks.scn" id="6_qoom7"]
+[ext_resource type="PackedScene" uid="uid://cuokv12judugu" path="res://scenes/room/Window.scn" id="7_gusms"]
+[ext_resource type="PackedScene" uid="uid://otyboji328i7" path="res://scenes/room/FireplaceCenter.scn" id="8_xwlcs"]
+[ext_resource type="PackedScene" uid="uid://537y6uyurmxk" path="res://scenes/room/FireplaceStructure.scn" id="9_elmdw"]
+[ext_resource type="PackedScene" uid="uid://dw0m6wvg05dwe" path="res://scenes/room/Floor.scn" id="10_qvwqk"]
+[ext_resource type="PackedScene" uid="uid://bkddxm2nfxjxc" path="res://scenes/room/Ceiling.scn" id="11_trp6l"]
+[ext_resource type="PackedScene" uid="uid://dmxog2f2aidun" path="res://scenes/room/StaticDeco/Candelabrum.scn" id="12_g8dcq"]
+[ext_resource type="PackedScene" uid="uid://dnaxfivv3fg0v" path="res://scenes/room/PuzzleFurniture/Table.scn" id="14_07pe2"]
+[ext_resource type="PackedScene" uid="uid://cwb7b575xaauy" path="res://scenes/room/StaticDeco/Lamp.scn" id="14_c0517"]
+[ext_resource type="PackedScene" uid="uid://cw8ywe7twvyin" path="res://scenes/room/StaticDeco/OldDamagedBook.scn" id="15_gloer"]
+[ext_resource type="PackedScene" uid="uid://dqtjr1juem4cj" path="res://scenes/room/StaticDeco/Pots.scn" id="16_8bikm"]
+[ext_resource type="PackedScene" uid="uid://c3nuyi0cg56uj" path="res://scenes/room/StaticDeco/Cauldron.scn" id="17_5oxji"]
+[ext_resource type="PackedScene" uid="uid://dcyx48ag6tulr" path="res://scenes/room/StaticDeco/Rug.scn" id="18_r6r3m"]
+[ext_resource type="PackedScene" uid="uid://b5bv1lclxnd78" path="res://scenes/room/PuzzleFurniture/Couch.scn" id="19_dwjf0"]
+[ext_resource type="PackedScene" uid="uid://d1eueeu2vd234" path="res://scenes/room/StaticDeco/FireplaceGrill.scn" id="20_p3ixe"]
+[ext_resource type="PackedScene" uid="uid://b4q8omn70oaha" path="res://scenes/room/StaticDeco/Chair.scn" id="21_0h6wl"]
+[ext_resource type="PackedScene" uid="uid://bp57ykitrf7wn" path="res://scenes/room/StaticDeco/ManPortrait.scn" id="22_3edn2"]
+[ext_resource type="PackedScene" uid="uid://dk4n5x7qq3jn3" path="res://scenes/room/StaticDeco/TeaPot.scn" id="23_1prvv"]
+[ext_resource type="PackedScene" uid="uid://bm1tqn8x6eems" path="res://scenes/room/StaticDeco/WallStorage.scn" id="25_ltby2"]
+[ext_resource type="PackedScene" uid="uid://cretswyufedqo" path="res://scenes/room/StaticDeco/BigPicture.scn" id="27_07pe2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ltby2"]
+albedo_color = Color(0.021434637, 0.021434635, 0.021434633, 1)
+emission_enabled = true
+emission = Color(0.00033936335, 0.0003401825, 0.016518546, 1)
+emission_energy_multiplier = 1.48
+
+[sub_resource type="BoxMesh" id="BoxMesh_6i03k"]
+material = SubResource("StandardMaterial3D_ltby2")
+
+[node name="RoomBase" type="Node3D" unique_id=443414814]
+
+[node name="Architecture" type="Node3D" parent="." unique_id=2110669117]
+
+[node name="Walls" type="Node3D" parent="Architecture" unique_id=1452834576]
+
+[node name="ClearWall" parent="Architecture/Walls" unique_id=521902224 instance=ExtResource("1_rsjo3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8265142, 0.69511557, 0)
+
+[node name="ClearWall2" parent="Architecture/Walls" unique_id=484466810 instance=ExtResource("1_rsjo3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.872427, 0.6319039, 0)
+
+[node name="LongWindowWall" parent="Architecture/Walls" unique_id=2066995701 instance=ExtResource("2_trp6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09, 2.3, 5.6)
+
+[node name="DoorWall" parent="Architecture/Walls" unique_id=1688309706 instance=ExtResource("3_w0s24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28880054, 1.86, -6.3)
+
+[node name="DoorArea" type="Node3D" parent="Architecture" unique_id=1437290050]
+
+[node name="DoorBricks" parent="Architecture/DoorArea" unique_id=906056403 instance=ExtResource("4_fc6bp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9577136, 1.5528288, -6.614009)
+
+[node name="BlockArea" type="Node3D" parent="Architecture/DoorArea" unique_id=1040491295]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Architecture/DoorArea/BlockArea" unique_id=896094250]
+transform = Transform3D(3.2740233, 0, 0, 0, 4.310002, 0, 0, 0, 1, -5.9901214, 1.8809037, -7.0714874)
+mesh = SubResource("BoxMesh_6i03k")
+
+[node name="Door" parent="Architecture/DoorArea" unique_id=1847153916 instance=ExtResource("5_ltby2")]
+transform = Transform3D(1.8, 0, 0, 0, -7.86805e-08, 1.8, 0, -1.8, -7.86805e-08, -6.0425, 0, -6.284896)
+
+[node name="WindowArea" type="Node3D" parent="Architecture" unique_id=1843249392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 2.385, 6.55)
+
+[node name="WindowBricks" parent="Architecture/WindowArea" unique_id=1717803237 instance=ExtResource("6_qoom7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.12096596)
+
+[node name="Window" parent="Architecture/WindowArea" unique_id=345043063 instance=ExtResource("7_gusms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049142122, -0.6402507)
+focus_id = &"decorative_window"
+
+[node name="WindowArea2" type="Node3D" parent="Architecture" unique_id=137839206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.685122, 2.391, 6.55)
+
+[node name="WindowBricks" parent="Architecture/WindowArea2" unique_id=522184383 instance=ExtResource("6_qoom7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.12096596)
+
+[node name="Window" parent="Architecture/WindowArea2" unique_id=2011608540 instance=ExtResource("7_gusms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.048705578, -0.6402507)
+is_event_window = true
+
+[node name="FireplaceArea" type="Node3D" parent="Architecture" unique_id=2084802453]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.875455, -5.337677)
+
+[node name="FireplaceCenter" parent="Architecture/FireplaceArea" unique_id=994965918 instance=ExtResource("8_xwlcs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.910064e-09, -0.3928535, 0.1019187)
+
+[node name="FireplaceStructure" parent="Architecture/FireplaceArea" unique_id=1634043227 instance=ExtResource("9_elmdw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2453825e-09, 0, -0.014245987)
+
+[node name="Floor" parent="Architecture" unique_id=1512901697 instance=ExtResource("10_qvwqk")]
+
+[node name="Ceiling" parent="Architecture" unique_id=1704701984 instance=ExtResource("11_trp6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9184854, 3.804751, 0.21557522)
+
+[node name="Markers" type="Node3D" parent="." unique_id=1762961992]
+
+[node name="StaticDecoration" type="Node3D" parent="." unique_id=480894527]
+
+[node name="Table" type="Node3D" parent="StaticDecoration" unique_id=1835967875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5559883, 0, 4.801867)
+
+[node name="Candle" parent="StaticDecoration/Table" unique_id=2064691635 instance=ExtResource("12_g8dcq")]
+transform = Transform3D(-0.2, 0, -1.7484556e-08, 0, 0.2, 0, 1.7484556e-08, 0, -0.2, -0.10980415, 1.430782, 0.14521885)
+
+[node name="OldDamagedBook" parent="StaticDecoration/Table" unique_id=1995461349 instance=ExtResource("15_gloer")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.677142, 1.4487671, -0.23577881)
+
+[node name="CoffeeTable" parent="StaticDecoration/Table" unique_id=899427228 instance=ExtResource("14_07pe2")]
+transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, 0, 0.76679516, 0)
+
+[node name="LampLeft" parent="StaticDecoration" unique_id=1101806426 instance=ExtResource("14_c0517")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.85, 2.8, 5.4)
+
+[node name="LampRight" parent="StaticDecoration" unique_id=1529586810 instance=ExtResource("14_c0517")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.2, 2.8, 5.4)
+
+[node name="Pots" parent="StaticDecoration" unique_id=1633569066 instance=ExtResource("16_8bikm")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.280349, 2.8205833, -5.7416954)
+
+[node name="Cauldron" parent="StaticDecoration" unique_id=1591421726 instance=ExtResource("17_5oxji")]
+transform = Transform3D(0.94014496, -0.01641029, 0.34037957, 0.017452406, 0.9998477, 0, -0.34032774, 0.0059404424, 0.9402881, 1.3238537, 1.8145053, -5.4473724)
+
+[node name="Rug" parent="StaticDecoration" unique_id=479395414 instance=ExtResource("18_r6r3m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10178554, 0)
+
+[node name="Couch" parent="StaticDecoration" unique_id=842987554 instance=ExtResource("19_dwjf0")]
+transform = Transform3D(-1.2, 0, -1.04907336e-07, 0, 1.2, 0, 1.04907336e-07, 0, -1.2, 7.3116446, 0.7133717, -4.615373)
+
+[node name="FireplaceGrill" parent="StaticDecoration" unique_id=1440734942 instance=ExtResource("20_p3ixe")]
+transform = Transform3D(-0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, -0.81915206, -1.4993174, 0.20204109, -4.344811)
+
+[node name="Chair" parent="StaticDecoration" unique_id=1306959867 instance=ExtResource("21_0h6wl")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.9083667, 0, 4.7430506)
+
+[node name="ManPortrait" parent="StaticDecoration" unique_id=1798076121 instance=ExtResource("22_3edn2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7383957, 2.8057404, -1.6849627)
+
+[node name="TeaPot" parent="StaticDecoration" unique_id=1115242653 instance=ExtResource("23_1prvv")]
+transform = Transform3D(0.17364822, 0, -0.9848077, 0, 1, 0, 0.9848077, 0, 0.17364822, 1.2116072, 0.20699954, -4.2854238)
+
+[node name="WallStorage" parent="StaticDecoration" unique_id=1095454625 instance=ExtResource("25_ltby2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.536285, 2.2952776, -4.3646607)
+
+[node name="BigPicture" parent="StaticDecoration" unique_id=1465734705 instance=ExtResource("27_07pe2")]
+transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, -7.72539, 2.7594328, -1.0748324)

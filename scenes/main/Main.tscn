@@ -1,0 +1,746 @@
+[gd_scene format=3 uid="uid://cx2ce1ew2c2kn"]
+
+[ext_resource type="PackedScene" uid="uid://bkxv5j77bseeo" path="res://scenes/room/Room.tscn" id="1_u1xfj"]
+[ext_resource type="PackedScene" uid="uid://ce3jrig7n7p61" path="res://scenes/room/PuzzleFurniture/AntiqueChair.scn" id="3_q24mn"]
+[ext_resource type="PackedScene" uid="uid://cule23b4o6h8b" path="res://scenes/room/PuzzleFurniture/Desk.scn" id="4_dc040"]
+[ext_resource type="PackedScene" uid="uid://c73fgpl6od8pn" path="res://scenes/room/PuzzleFurniture/AntiqueCandle.scn" id="4_gyg6b"]
+[ext_resource type="PackedScene" uid="uid://bb460t458yt4o" path="res://scenes/room/PuzzleFurniture/Paper.scn" id="5_1rhdn"]
+[ext_resource type="PackedScene" uid="uid://b2v0pw8lf3aas" path="res://scenes/room/PuzzleFurniture/PoemBook.scn" id="5_dc040"]
+[ext_resource type="PackedScene" uid="uid://dt8ixpxbbpft2" path="res://scenes/room/PuzzleFurniture/Bookshelf.scn" id="7_3km4f"]
+[ext_resource type="Script" uid="uid://uscgqwfjkecq" path="res://scripts/camera/camera_rig.gd" id="7_sjxhf"]
+[ext_resource type="PackedScene" uid="uid://ekuod4ch761o" path="res://scenes/room/PuzzleFurniture/BookStack.scn" id="8_2tpxt"]
+[ext_resource type="Script" uid="uid://bq27doncg7tif" path="res://scripts/camera/camera_focus_point.gd" id="8_ko0rf"]
+[ext_resource type="PackedScene" uid="uid://bhqtq7d3dwhiu" path="res://scenes/room/StaticDeco/BookDeco.scn" id="9_jsdfw"]
+[ext_resource type="Script" uid="uid://dbl6lvhsr6aj2" path="res://scripts/camera/focus_clickable.gd" id="9_ostsq"]
+[ext_resource type="PackedScene" uid="uid://dex1d3pygqyp3" path="res://scenes/room/PuzzleFurniture/PuzzleBook.scn" id="9_p5fgu"]
+[ext_resource type="Script" uid="uid://havda0tlntrb" path="res://scripts/Interactor/mouse_interactor.gd" id="11_qkm1d"]
+[ext_resource type="PackedScene" uid="uid://ko7cuc3rfsc2" path="res://scenes/room/StaticDeco/BookRow.scn" id="12_tck0d"]
+[ext_resource type="Script" uid="uid://ckb2dlpbuswby" path="res://scripts/puzzles/puzzle1/puzzle_books_controller.gd" id="12_u8lgh"]
+[ext_resource type="Script" uid="uid://bitkf0qtnkyg1" path="res://scripts/puzzles/puzzle1/puzzle_one_controller.gd" id="14_hjnkw"]
+[ext_resource type="PackedScene" uid="uid://d4mqq26tovl6m" path="res://scenes/room/PuzzleFurniture/Clock.scn" id="15_rikml"]
+[ext_resource type="Script" uid="uid://cyd2qo4kv0sfp" path="res://scripts/puzzles/puzzle2/PuzzleLenoraController.gd" id="16_d8523"]
+[ext_resource type="PackedScene" uid="uid://cqkb42mnmwp2c" path="res://scenes/room/PuzzleFurniture/LenoraFrame.scn" id="16_grv7h"]
+[ext_resource type="Script" uid="uid://cvuq566ooyvde" path="res://scripts/puzzles/puzzle3/PuzzleRhytmController.gd" id="16_n12rl"]
+[ext_resource type="PackedScene" uid="uid://cq7vtv2h3ujdq" path="res://scenes/room/PuzzleFurniture/Square.scn" id="16_yub1f"]
+[ext_resource type="Script" uid="uid://didxnrmfbs1q4" path="res://scripts/puzzles/puzzle4/WindowEventController.gd" id="17_ilqpp"]
+[ext_resource type="Script" uid="uid://cerjeyqb7bn5m" path="res://scripts/puzzles/puzzle5/RavenRitualController.gd" id="18_04n4k"]
+[ext_resource type="Script" uid="uid://hphhya50xjin" path="res://scripts/puzzles/EndingController.gd" id="19_8dhb5"]
+[ext_resource type="PackedScene" uid="uid://d2oe2lhl3gyff" path="res://scenes/room/StaticDeco/Stool.scn" id="19_enl7a"]
+[ext_resource type="Script" uid="uid://d3w2xoektprt2" path="res://scripts/ui/UIManager.gd" id="19_vc03v"]
+[ext_resource type="PackedScene" uid="uid://6l8abcl3gufi" path="res://scenes/room/StaticDeco/WoodenBox.scn" id="20_j0f7u"]
+[ext_resource type="PackedScene" uid="uid://ckkqf54tuw2x6" path="res://scenes/room/PuzzleFurniture/Bell.scn" id="21_j0f7u"]
+[ext_resource type="PackedScene" uid="uid://ci1mc13fetjxp" path="res://scenes/room/StaticDeco/BookTable.scn" id="23_0cxqb"]
+[ext_resource type="PackedScene" uid="uid://cjljn47n0jcw7" path="res://scenes/room/PuzzleFurniture/Bust.scn" id="24_u7tt4"]
+[ext_resource type="PackedScene" uid="uid://cqtejvdoa4igb" path="res://scenes/room/PuzzleFurniture/Crow.scn" id="26_ftc2p"]
+[ext_resource type="Texture2D" uid="uid://ciuds6iicmkve" path="res://assets/textures/night.jpg" id="29_ew7m7"]
+[ext_resource type="Texture2D" uid="uid://bxg3xco00bdfx" path="res://assets/textures/rain.png" id="30_fg4ko"]
+[ext_resource type="Script" uid="uid://cfrwplgd3knbo" path="res://scripts/ui/FakeRainPlane.gd" id="31_m1khv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3km4f"]
+size = Vector3(1.2427979, 0.46484375, 0.36938477)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ew7m7"]
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("29_ew7m7")
+
+[sub_resource type="QuadMesh" id="QuadMesh_fg4ko"]
+material = SubResource("StandardMaterial3D_ew7m7")
+size = Vector2(3, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1khv"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.039215688)
+albedo_texture = ExtResource("30_fg4ko")
+disable_receive_shadows = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_vs4dm"]
+material = SubResource("StandardMaterial3D_m1khv")
+size = Vector2(3, 1.5)
+
+[sub_resource type="SystemFont" id="SystemFont_grv7h"]
+font_names = PackedStringArray("Fantasy")
+
+[sub_resource type="LabelSettings" id="LabelSettings_yub1f"]
+font = SubResource("SystemFont_grv7h")
+font_size = 24
+font_color = Color(0.9019608, 0.8509804, 0.72156864, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_yub1f"]
+font_names = PackedStringArray("Fantasy")
+
+[sub_resource type="LabelSettings" id="LabelSettings_d8523"]
+font = SubResource("SystemFont_yub1f")
+font_size = 20
+font_color = Color(0.9019608, 0.8509804, 0.72156864, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_d8523"]
+font_names = PackedStringArray("Fantasy")
+
+[sub_resource type="LabelSettings" id="LabelSettings_roob6"]
+font = SubResource("SystemFont_d8523")
+font_size = 18
+font_color = Color(0.9019608, 0.8509804, 0.72156864, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_vc03v"]
+font_names = PackedStringArray("Baskerville Old Face")
+
+[sub_resource type="LabelSettings" id="LabelSettings_grv7h"]
+font = SubResource("SystemFont_vc03v")
+font_size = 26
+font_color = Color(0.8784314, 0.7882353, 0.56078434, 1)
+
+[sub_resource type="Environment" id="Environment_8dhb5"]
+background_mode = 1
+ambient_light_color = Color(0.080783345, 0.080783345, 0.080783345, 1)
+ambient_light_energy = 0.2
+
+[node name="Main" type="Node3D" unique_id=977062611]
+
+[node name="World" type="Node3D" parent="." unique_id=835140683]
+
+[node name="RoomBase" parent="World" unique_id=443414814 instance=ExtResource("1_u1xfj")]
+
+[node name="GameplayObjects" type="Node3D" parent="World" unique_id=421015677]
+
+[node name="TableArea" type="Node3D" parent="World/GameplayObjects" unique_id=725168917]
+
+[node name="Furniture" type="Node3D" parent="World/GameplayObjects/TableArea" unique_id=2020139981]
+
+[node name="AntiqueChair" parent="World/GameplayObjects/TableArea/Furniture" unique_id=1864143818 instance=ExtResource("3_q24mn")]
+transform = Transform3D(0.42261824, 0, -0.9063078, 0, 1, 0, 0.9063078, 0, 0.42261824, -4.9742894, 1.3989829, -0.93905914)
+
+[node name="Desk" parent="World/GameplayObjects/TableArea/Furniture" unique_id=348168326 instance=ExtResource("4_dc040")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -7.005065, 0, -0.030647755)
+
+[node name="Lights" type="Node3D" parent="World/GameplayObjects/TableArea" unique_id=832485098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.734, 0.927, -0.745)
+
+[node name="AntiqueCandle" parent="World/GameplayObjects/TableArea/Lights" unique_id=1803751358 instance=ExtResource("4_gyg6b")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="IntroFragmentArea" type="Node3D" parent="World/GameplayObjects/TableArea" unique_id=1598729101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.107, 0.931, -0.16)
+
+[node name="Paper" parent="World/GameplayObjects/TableArea/IntroFragmentArea" unique_id=648681863 instance=ExtResource("5_1rhdn")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+required_focus_id = &"desk"
+
+[node name="FragmentJournalArea" type="Node3D" parent="World/GameplayObjects/TableArea" unique_id=1989159806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.828, 0.935, 0.469)
+
+[node name="FragmentJournalBook" parent="World/GameplayObjects/TableArea/FragmentJournalArea" unique_id=1895616230 instance=ExtResource("5_dc040")]
+transform = Transform3D(0.37460664, 0, -0.92718387, 0, 1, 0, 0.92718387, 0, 0.37460664, 0, 0, 0)
+
+[node name="BookshelfArea" type="Node3D" parent="World/GameplayObjects" unique_id=843302419]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 7.44178, 1.0949231, 2.1582189)
+
+[node name="Bookshelf" parent="World/GameplayObjects/BookshelfArea" unique_id=26469498 instance=ExtResource("7_3km4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.051707745)
+
+[node name="RowOne" type="Node3D" parent="World/GameplayObjects/BookshelfArea/Bookshelf" unique_id=80285790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5278399, 0.7227714, 0)
+
+[node name="BookStack" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne" unique_id=1756826664 instance=ExtResource("8_2tpxt")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.32520056, -0.060643554, 0)
+
+[node name="BookDeco" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne" unique_id=1554765064 instance=ExtResource("9_jsdfw")]
+transform = Transform3D(-4.371139e-08, 0.9659258, -0.25881904, 0, -0.25881904, -0.9659258, -1, -4.222196e-08, 1.131334e-08, 0, 0, 0)
+
+[node name="PuzzleRow" type="Node3D" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne" unique_id=1091741497 node_paths=PackedStringArray("books", "slots")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5278399, -0.25056028, 0.051707745)
+script = ExtResource("12_u8lgh")
+books = [NodePath("Books/Book_MeiaNoite"), NodePath("Books/Book_Manuais"), NodePath("Books/Book_Ruido"), NodePath("Books/Book_Porta"), NodePath("Books/Book_Devagar"), NodePath("Books/Book_NadaMais")]
+slots = [NodePath("Slots/Slot"), NodePath("Slots/Slot2"), NodePath("Slots/Slot3"), NodePath("Slots/Slot4"), NodePath("Slots/Slot5"), NodePath("Slots/Slot6")]
+
+[node name="FocusHitbox" type="Area3D" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne/PuzzleRow" unique_id=532734252]
+collision_layer = 2
+script = ExtResource("9_ostsq")
+focus_id = &"puzzle_row"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne/PuzzleRow/FocusHitbox" unique_id=2121580949]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1035156e-05, 0.26757813, -0.06188965)
+shape = SubResource("BoxShape3D_3km4f")
+
+[node name="Books" type="Node3D" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne/PuzzleRow" unique_id=829522419]
+
+[node name="Book_MeiaNoite" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne/PuzzleRow/Books" unique_id=394092814 instance=ExtResource("9_p5fgu")]
+transform = Transform3D(-7.824338e-08, 0, 1.79, 0, 1.79, 0, -1.79, 0, -7.824338e-08, -0.5500001, 0.07200003, -0.03399992)
+selected_title_color = Color(1, 0.92, 0.45, 1)
+is_enabled = true
+required_focus_id = &"puzzle_row"
+
+[node name="Book_Manuais" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne/PuzzleRow/Books" unique_id=858031774 instance=ExtResource("9_p5fgu")]
+transform = Transform3D(-7.824338e-08, 0, 1.79, 0, 1.79, 0, -1.79, 0, -7.824338e-08, -0.45000017, 0.07200003, -0.03399992)
+book_id = &"manuais"
+book_title = "Manuais de jardinagem"
+selected_title_color = Color(1, 0.92, 0.45, 1)
+manual_title_text = "Manuais de
+jardinagem"
+is_enabled = true
+required_focus_id = &"puzzle_row"
+
+[node name="Book_Ruido" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne/PuzzleRow/Books" unique_id=634409418 instance=ExtResource("9_p5fgu")]
+transform = Transform3D(-7.824338e-08, 0, 1.79, 0, 1.79, 0, -1.79, 0, -7.824338e-08, -0.35000014, 0.07200003, -0.03399992)
+book_id = &"ruido"
+book_title = "O ruído dos derrotados"
+selected_title_color = Color(1, 0.92, 0.45, 1)
+manual_title_text = "O ruído dos
+derrotados"
+is_enabled = true
+required_focus_id = &"puzzle_row"
+
+[node name="Book_Porta" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne/PuzzleRow/Books" unique_id=719044862 instance=ExtResource("9_p5fgu")]
+transform = Transform3D(-7.824338e-08, 0, 1.79, 0, 1.79, 0, -1.79, 0, -7.824338e-08, -0.25000012, 0.07200003, -0.03399992)
+book_id = &"porta"
+book_title = "A porta"
+selected_title_color = Color(1, 0.92, 0.45, 1)
+use_manual_line_breaks = false
+manual_title_text = ""
+is_enabled = true
+required_focus_id = &"puzzle_row"
+
+[node name="Book_Devagar" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne/PuzzleRow/Books" unique_id=385811101 instance=ExtResource("9_p5fgu")]
+transform = Transform3D(-7.824338e-08, 0, 1.79, 0, 1.79, 0, -1.79, 0, -7.824338e-08, -0.1500001, 0.07200003, -0.03399992)
+book_id = &"devagar"
+book_title = "Devagar, quase correndo"
+title_font_size = 38
+selected_title_color = Color(1, 0.92, 0.45, 1)
+manual_title_text = "Devagar,
+quase correndo"
+is_enabled = true
+required_focus_id = &"puzzle_row"
+
+[node name="Book_NadaMais" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne/PuzzleRow/Books" unique_id=274687657 instance=ExtResource("9_p5fgu")]
+transform = Transform3D(-7.824338e-08, 0, 1.79, 0, 1.79, 0, -1.79, 0, -7.824338e-08, -0.049999952, 0.07200003, -0.03399992)
+book_id = &"nada_mais"
+book_title = "Escuridão e Nada Mais"
+title_font_size = 38
+selected_title_color = Color(1, 0.92, 0.45, 1)
+manual_title_text = "Escuridão e
+Nada Mais"
+is_enabled = true
+required_focus_id = &"puzzle_row"
+
+[node name="Slots" type="Node3D" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne/PuzzleRow" unique_id=679246643]
+
+[node name="Slot" type="Marker3D" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne/PuzzleRow/Slots" unique_id=436224669]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.55, 0.072, -0.034)
+
+[node name="Slot2" type="Marker3D" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne/PuzzleRow/Slots" unique_id=687580619]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.45, 0.072, -0.034)
+
+[node name="Slot3" type="Marker3D" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne/PuzzleRow/Slots" unique_id=1612907123]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.35, 0.072, -0.034)
+
+[node name="Slot4" type="Marker3D" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne/PuzzleRow/Slots" unique_id=1117828792]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.25, 0.072, -0.034)
+
+[node name="Slot5" type="Marker3D" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne/PuzzleRow/Slots" unique_id=1277372023]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.15, 0.072, -0.034)
+
+[node name="Slot6" type="Marker3D" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowOne/PuzzleRow/Slots" unique_id=1974496240]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.05, 0.072, -0.034)
+
+[node name="RowTwo" type="Node3D" parent="World/GameplayObjects/BookshelfArea/Bookshelf" unique_id=2076245]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04504955, 0)
+
+[node name="BookRow" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowTwo" unique_id=1820112974 instance=ExtResource("12_tck0d")]
+transform = Transform3D(-2.1855695e-09, 0, -0.05, 0, 0.05, 0, 0.05, 0, -2.1855695e-09, -0.5500001, 0, -0.030250072)
+
+[node name="RowThree" type="Node3D" parent="World/GameplayObjects/BookshelfArea/Bookshelf" unique_id=2031588990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4556911, 0)
+
+[node name="BookRow" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowThree" unique_id=715335627 instance=ExtResource("12_tck0d")]
+transform = Transform3D(-2.1855695e-09, 0, -0.05, 0, 0.05, 0, 0.05, 0, -2.1855695e-09, -0.5500001, 0, -0.030250072)
+
+[node name="RowFour" type="Node3D" parent="World/GameplayObjects/BookshelfArea/Bookshelf" unique_id=434946110]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9170547, 0)
+
+[node name="BookRow" parent="World/GameplayObjects/BookshelfArea/Bookshelf/RowFour" unique_id=225563392 instance=ExtResource("12_tck0d")]
+transform = Transform3D(-2.1855695e-09, 0, -0.05, 0, 0.05, 0, 0.05, 0, -2.1855695e-09, -0.5500001, 0, -0.030250072)
+
+[node name="ClockArea" type="Node3D" parent="World/GameplayObjects" unique_id=255892967]
+transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, -2.3482912, 2.2383149, 5.3952694)
+
+[node name="Clock" parent="World/GameplayObjects/ClockArea" unique_id=388452423 instance=ExtResource("15_rikml")]
+
+[node name="PuzzleControllers" type="Node3D" parent="World/GameplayObjects" unique_id=31680643]
+
+[node name="PuzzleOneController" type="Node3D" parent="World/GameplayObjects/PuzzleControllers" unique_id=1943171057 node_paths=PackedStringArray("books_controller", "clock")]
+script = ExtResource("14_hjnkw")
+books_controller = NodePath("../../BookshelfArea/Bookshelf/RowOne/PuzzleRow")
+clock = NodePath("../../ClockArea/Clock")
+
+[node name="PuzzleRhytmControler" type="Node3D" parent="World/GameplayObjects/PuzzleControllers" unique_id=1912794862 node_paths=PackedStringArray("fragment_paper")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1517515, 1.812624, -6.304839)
+script = ExtResource("16_n12rl")
+fragment_paper = NodePath("../../FragmentDoorPaper/Paper")
+door_group = &"puzzle_door"
+
+[node name="WindowEventController" type="Node3D" parent="World/GameplayObjects/PuzzleControllers" unique_id=2142635362 node_paths=PackedStringArray("raven", "window_start_marker", "path_markers", "bust_target_marker", "fragment_paper")]
+script = ExtResource("17_ilqpp")
+raven = NodePath("../../Raven")
+window_start_marker = NodePath("../../RavenPath/RavenWindowStart")
+path_markers = [NodePath("../../RavenPath/RavenPath1"), NodePath("../../RavenPath/RavenPath2")]
+bust_target_marker = NodePath("../../RavenPath/RavenBustTarget")
+fragment_paper = NodePath("../../BookTableArea/FragmentPaperCrow")
+segment_durations = Array[float]([0.75, 1.35, 1.9])
+debug_enabled = true
+debug_force_state_on_ready = true
+
+[node name="RavenRitualController" type="Node3D" parent="World/GameplayObjects/PuzzleControllers" unique_id=1747542956 node_paths=PackedStringArray("panel")]
+script = ExtResource("18_04n4k")
+panel = NodePath("../../../../UI/RavenRitualPanel")
+
+[node name="EndingController" type="Node3D" parent="World/GameplayObjects/PuzzleControllers" unique_id=242084828]
+script = ExtResource("19_8dhb5")
+
+[node name="LenoraArea" type="Node3D" parent="World/GameplayObjects" unique_id=1922366796 node_paths=PackedStringArray("plates", "fragment_paper")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.871632, 2.214655, -5.5412145)
+script = ExtResource("16_d8523")
+plates = [NodePath("LetterPlates/Plate"), NodePath("LetterPlates/Plate2"), NodePath("LetterPlates/Plate3"), NodePath("LetterPlates/Plate4"), NodePath("LetterPlates/Plate5"), NodePath("LetterPlates/Plate6")]
+fragment_paper = NodePath("Paper")
+
+[node name="LetterPlates" type="Node3D" parent="World/GameplayObjects/LenoraArea" unique_id=165489874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, -0.282, -0.38)
+
+[node name="Plate" parent="World/GameplayObjects/LenoraArea/LetterPlates" unique_id=483598576 instance=ExtResource("16_yub1f")]
+
+[node name="Plate2" parent="World/GameplayObjects/LenoraArea/LetterPlates" unique_id=1601792526 instance=ExtResource("16_yub1f")]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0.2, 0, 0)
+
+[node name="Plate3" parent="World/GameplayObjects/LenoraArea/LetterPlates" unique_id=94684623 instance=ExtResource("16_yub1f")]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0.4, 0, 0)
+
+[node name="Plate4" parent="World/GameplayObjects/LenoraArea/LetterPlates" unique_id=175197470 instance=ExtResource("16_yub1f")]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0.6, 0, 0)
+
+[node name="Plate5" parent="World/GameplayObjects/LenoraArea/LetterPlates" unique_id=1308458523 instance=ExtResource("16_yub1f")]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0.8, 0, 0)
+
+[node name="Plate6" parent="World/GameplayObjects/LenoraArea/LetterPlates" unique_id=1641033280 instance=ExtResource("16_yub1f")]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 1, 0, 0)
+
+[node name="Paper" parent="World/GameplayObjects/LenoraArea" unique_id=1571920380 instance=ExtResource("5_1rhdn")]
+transform = Transform3D(0.56662196, 0, -0.8239779, 0, 1, 0, 0.8239779, 0, 0.56662196, 0, -2.0007389, 0)
+fragment_id = 3
+available = false
+hide_until_available = true
+required_focus_id = &"root"
+
+[node name="PictureFrame" parent="World/GameplayObjects/LenoraArea" unique_id=1828073545 instance=ExtResource("16_grv7h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64, 0.62, -0.358)
+
+[node name="StoolObjects" type="Node3D" parent="World/GameplayObjects" unique_id=1643318658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3966455, 0, 0.40138716)
+
+[node name="Stool" parent="World/GameplayObjects/StoolObjects" unique_id=608490226 instance=ExtResource("19_enl7a")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="WoodenBox" parent="World/GameplayObjects/StoolObjects" unique_id=84081063 instance=ExtResource("20_j0f7u")]
+transform = Transform3D(-1.7484556e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.7484556e-08, 0, 0.9200918, -0.2744847)
+
+[node name="SoundObjects" type="Node3D" parent="World/GameplayObjects/StoolObjects" unique_id=1985266093]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.31544304, 1.2659788, -0.48525667)
+
+[node name="Bell" parent="World/GameplayObjects/StoolObjects/SoundObjects" unique_id=1688923129 node_paths=PackedStringArray("controller") instance=ExtResource("21_j0f7u")]
+transform = Transform3D(0.20000002, 0, 0, 0, 0.20000002, 0, 0, 0, 0.20000002, 0, 0, -0.45)
+controller = NodePath("../../../PuzzleControllers/PuzzleRhytmControler")
+
+[node name="Bell2" parent="World/GameplayObjects/StoolObjects/SoundObjects" unique_id=1458169705 node_paths=PackedStringArray("controller") instance=ExtResource("21_j0f7u")]
+rhythm_value = 2
+controller = NodePath("../../../PuzzleControllers/PuzzleRhytmControler")
+
+[node name="Bell3" parent="World/GameplayObjects/StoolObjects/SoundObjects" unique_id=2008752904 node_paths=PackedStringArray("controller") instance=ExtResource("21_j0f7u")]
+transform = Transform3D(0.20000002, 0, 0, 0, 0.20000002, 0, 0, 0, 0.20000002, 0, 0, 0.45)
+rhythm_value = 3
+controller = NodePath("../../../PuzzleControllers/PuzzleRhytmControler")
+
+[node name="FragmentDoorPaper" type="Node3D" parent="World/GameplayObjects" unique_id=1186335311]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5471554, 0.13422924, -6.25995)
+
+[node name="Paper" parent="World/GameplayObjects/FragmentDoorPaper" unique_id=1796018317 instance=ExtResource("5_1rhdn")]
+transform = Transform3D(0.3380946, 0, -0.7250463, 0, 0.8, 0, 0.7250463, 0, 0.3380946, 0, 0, 0)
+fragment_id = 4
+available = false
+hide_until_available = true
+required_focus_id = &"door_open"
+
+[node name="BookTableArea" type="Node3D" parent="World/GameplayObjects" unique_id=799901208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.535348, 0.73344594, -5.260038)
+
+[node name="BookTable" parent="World/GameplayObjects/BookTableArea" unique_id=520084083 instance=ExtResource("23_0cxqb")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -0.63537633, 0)
+
+[node name="RavenBustTarget" parent="World/GameplayObjects/BookTableArea" unique_id=1406782476 instance=ExtResource("24_u7tt4")]
+transform = Transform3D(-0.112111725, 0, 1.5960673, 0, 1.6, 0, -1.5960673, 0, -0.112111725, 0.51341057, -0.14447665, 0.047349453)
+
+[node name="FragmentPaperCrow" parent="World/GameplayObjects/BookTableArea" unique_id=222845385 instance=ExtResource("5_1rhdn")]
+transform = Transform3D(0.6993337, 0.03053357, 0, -0.03053357, 0.6993337, 0, 0, 0, 0.7, 0.74093866, -0.14210063, 0.0228796)
+fragment_id = 5
+available = false
+hide_until_available = true
+required_focus_id = &"couch"
+
+[node name="Raven" parent="World/GameplayObjects" unique_id=1353665445 instance=ExtResource("26_ftc2p")]
+transform = Transform3D(-0.07071068, 0, -0.07071068, 0, 0.1, 0, 0.07071068, 0, -0.07071068, -5.4916835, 1.8935496, 6.17964)
+
+[node name="Raven2" parent="World/GameplayObjects" unique_id=1243501160 instance=ExtResource("26_ftc2p")]
+transform = Transform3D(-0.049999993, 0, 0.086602546, 0, 0.1, 0, -0.086602546, 0, -0.049999993, -5.492, 2.574, 3.268)
+
+[node name="RavenPath" type="Node3D" parent="World/GameplayObjects" unique_id=947828306]
+
+[node name="RavenWindowStart" type="Marker3D" parent="World/GameplayObjects/RavenPath" unique_id=1368890510]
+transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, -5.492, 1.894, 6.18)
+
+[node name="RavenPath1" type="Marker3D" parent="World/GameplayObjects/RavenPath" unique_id=1046025204]
+transform = Transform3D(-0.49999985, 0, 0.8660253, 0, 1, 0, -0.8660253, 0, -0.49999985, -5.492, 2.5742817, 3.267507)
+
+[node name="RavenPath2" type="Marker3D" parent="World/GameplayObjects/RavenPath" unique_id=794705924]
+transform = Transform3D(-0.93969256, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, -0.93969256, -1.6239276, 3.008087, -0.5113002)
+
+[node name="RavenBustTarget" type="Marker3D" parent="World/GameplayObjects/RavenPath" unique_id=1637837982]
+transform = Transform3D(-0.25881904, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, -0.25881904, 6.054, 1.299, -5.23)
+
+[node name="WindowExterior" type="Node3D" parent="World" unique_id=2102611597]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 3.1282773, 10.690803)
+
+[node name="NightPlane" type="MeshInstance3D" parent="World/WindowExterior" unique_id=1073721014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.483712, -0.6296811, 3.833156)
+mesh = SubResource("QuadMesh_fg4ko")
+
+[node name="NightPlane2" type="MeshInstance3D" parent="World/WindowExterior" unique_id=957817318]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2467966, -0.6296811, 3.8331585)
+mesh = SubResource("QuadMesh_fg4ko")
+
+[node name="RainPlane" type="MeshInstance3D" parent="World/WindowExterior" unique_id=1693711972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.523, -0.658, 3.8366241)
+mesh = SubResource("QuadMesh_vs4dm")
+script = ExtResource("31_m1khv")
+scroll_speed = Vector2(0.15, -0.75)
+
+[node name="RainPlane2" type="MeshInstance3D" parent="World/WindowExterior" unique_id=831764107]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6995406, -0.6579468, 3.8456202)
+mesh = SubResource("QuadMesh_vs4dm")
+script = ExtResource("31_m1khv")
+scroll_speed = Vector2(0.15, -0.75)
+
+[node name="WindowColdLight" type="SpotLight3D" parent="World/WindowExterior" unique_id=454202364]
+transform = Transform3D(-0.7660445, 0, 0.6427876, 0, 1, 0, -0.6427876, 0, -0.7660445, 9.580757, 0.38491488, -3.0454664)
+light_color = Color(0.56078434, 0.65882355, 0.78431374, 1)
+light_energy = 4.0
+light_specular = 1.5
+spot_range = 50.0
+spot_attenuation = 1.1
+
+[node name="CameraRig" type="Node3D" parent="." unique_id=2047118079 node_paths=PackedStringArray("camera", "marker_0", "marker_90", "marker_180", "marker_270", "focus_points")]
+script = ExtResource("7_sjxhf")
+focus_duration = 0.25
+camera = NodePath("Camera3D")
+marker_0 = NodePath("../CameraViewMarkers/CamPos_0")
+marker_90 = NodePath("../CameraViewMarkers/CamPos_90")
+marker_180 = NodePath("../CameraViewMarkers/CamPos_180")
+marker_270 = NodePath("../CameraViewMarkers/CamPos_270")
+focus_points = [NodePath("../CameraFocusMarkers/Focus_Chair"), NodePath("../CameraFocusMarkers/Focus_Desk"), NodePath("../CameraFocusMarkers/Focus_Book"), NodePath("../CameraFocusMarkers/Focus_Bookshelf"), NodePath("../CameraFocusMarkers/Focus_PuzzleRow"), NodePath("../CameraFocusMarkers/Focus_Clock"), NodePath("../CameraFocusMarkers/Focus_Lenora"), NodePath("../CameraFocusMarkers/Focus_Stool"), NodePath("../CameraFocusMarkers/Focus_Door_Closed"), NodePath("../CameraFocusMarkers/Focus_Door_Open"), NodePath("../CameraFocusMarkers/Focus_Window"), NodePath("../CameraFocusMarkers/Focus_Couch")]
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig" unique_id=55664618]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1.4)
+current = true
+far = 20.0
+
+[node name="CameraViewMarkers" type="Node3D" parent="." unique_id=236301680]
+
+[node name="CamPos_0" type="Marker3D" parent="CameraViewMarkers" unique_id=1569053827]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1.4)
+
+[node name="CamPos_90" type="Marker3D" parent="CameraViewMarkers" unique_id=1536684916]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2, 2, 0)
+
+[node name="CamPos_180" type="Marker3D" parent="CameraViewMarkers" unique_id=1048587029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.75)
+
+[node name="CamPos_270" type="Marker3D" parent="CameraViewMarkers" unique_id=1063486559]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 0)
+
+[node name="CameraFocusMarkers" type="Node3D" parent="." unique_id=1832656036]
+
+[node name="Focus_Chair" type="Marker3D" parent="CameraFocusMarkers" unique_id=1283881471]
+transform = Transform3D(-0.42261833, -0.188432, 0.8865028, 0, 0.9781476, 0.2079117, -0.90630776, 0.0878673, -0.41338313, -5.3, 1.6, -0.7)
+script = ExtResource("8_ko0rf")
+focus_id = &"chair"
+
+[node name="Focus_Desk" type="Marker3D" parent="CameraFocusMarkers" unique_id=1182120982]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, -6.75, 2, 0)
+script = ExtResource("8_ko0rf")
+focus_id = &"desk"
+parent_focus_id = &"chair"
+
+[node name="Focus_Book" type="Marker3D" parent="CameraFocusMarkers" unique_id=1475261833]
+transform = Transform3D(-0.39073116, -0.92050487, -4.0236547e-08, 0, -4.371139e-08, 1, -0.92050487, 0.39073116, 1.7079401e-08, -6.82, 1.4, 0.55)
+script = ExtResource("8_ko0rf")
+focus_id = &"book"
+parent_focus_id = &"desk"
+
+[node name="Focus_Bookshelf" type="Marker3D" parent="CameraFocusMarkers" unique_id=1821225379]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 5.9, 1.1, 2.2)
+script = ExtResource("8_ko0rf")
+focus_id = &"bookshelf"
+
+[node name="Focus_PuzzleRow" type="Marker3D" parent="CameraFocusMarkers" unique_id=143315167]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 6.65, 1.85, 2.15)
+script = ExtResource("8_ko0rf")
+focus_id = &"puzzle_row"
+parent_focus_id = &"bookshelf"
+
+[node name="Focus_Clock" type="Marker3D" parent="CameraFocusMarkers" unique_id=199268070]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.35, 2.875, 4.5)
+script = ExtResource("8_ko0rf")
+focus_id = &"clock"
+
+[node name="Focus_Lenora" type="Marker3D" parent="CameraFocusMarkers" unique_id=1332077112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3, 2.58, -4.2)
+script = ExtResource("8_ko0rf")
+focus_id = &"lenora"
+
+[node name="Focus_Stool" type="Marker3D" parent="CameraFocusMarkers" unique_id=1981873306]
+transform = Transform3D(-4.371139e-08, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 1, 3.090862e-08, -3.090862e-08, 6.6, 1.8, 0.1)
+script = ExtResource("8_ko0rf")
+focus_id = &"stool"
+
+[node name="Focus_Door_Closed" type="Marker3D" parent="CameraFocusMarkers" unique_id=393343108]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2, -3.5)
+script = ExtResource("8_ko0rf")
+focus_id = &"door"
+
+[node name="Focus_Door_Open" type="Marker3D" parent="CameraFocusMarkers" unique_id=1493922540]
+transform = Transform3D(0.81915206, -0.09960051, 0.56486255, 0, 0.9848077, 0.17364818, -0.57357645, -0.14224426, 0.80670726, -4, 2.4, -3.5)
+script = ExtResource("8_ko0rf")
+focus_id = &"door_open"
+
+[node name="Focus_Window" type="Marker3D" parent="CameraFocusMarkers" unique_id=1232968966]
+transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, -6.75, 2.2, 5.4)
+script = ExtResource("8_ko0rf")
+focus_id = &"window"
+
+[node name="Focus_Couch" type="Marker3D" parent="CameraFocusMarkers" unique_id=2021866839]
+transform = Transform3D(-0.42261833, 0, 0.90630776, 0, 1, 0, -0.90630776, 0, -0.42261833, 7.4, 1, -5.4)
+script = ExtResource("8_ko0rf")
+focus_id = &"couch"
+
+[node name="InteractionController" type="Node3D" parent="." unique_id=272117700 node_paths=PackedStringArray("camera", "camera_rig")]
+script = ExtResource("11_qkm1d")
+camera = NodePath("../CameraRig/Camera3D")
+camera_rig = NodePath("../CameraRig")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1139481997]
+script = ExtResource("19_vc03v")
+
+[node name="HUD" type="Control" parent="UI" unique_id=2070470290]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeftMargin" type="MarginContainer" parent="UI/HUD" unique_id=881139658]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 450.0
+offset_bottom = 180.0
+
+[node name="VBox" type="VBoxContainer" parent="UI/HUD/TopLeftMargin" unique_id=1351160372]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ObjectiveLabel" type="Label" parent="UI/HUD/TopLeftMargin/VBox" unique_id=1925319356]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "Teste"
+label_settings = SubResource("LabelSettings_yub1f")
+autowrap_mode = 3
+
+[node name="FeedbackLabel" type="Label" parent="UI/HUD/TopLeftMargin/VBox" unique_id=303845385]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+text = "Teste"
+label_settings = SubResource("LabelSettings_d8523")
+
+[node name="PendingFragmentLabel" type="Label" parent="UI/HUD/TopLeftMargin/VBox" unique_id=368530830]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+text = "Teste"
+label_settings = SubResource("LabelSettings_roob6")
+
+[node name="InventoryPanel" type="PanelContainer" parent="UI/HUD" unique_id=419661365]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 119.0
+
+[node name="Margin" type="MarginContainer" parent="UI/HUD/InventoryPanel" unique_id=1189436402]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="UI/HUD/InventoryPanel/Margin" unique_id=1408917763]
+layout_mode = 2
+
+[node name="InventoryTitle" type="Label" parent="UI/HUD/InventoryPanel/Margin/VBox" unique_id=947156206]
+layout_mode = 2
+
+[node name="Slot" type="Button" parent="UI/HUD/InventoryPanel/Margin/VBox" unique_id=334732900]
+layout_mode = 2
+
+[node name="Slot2" type="Button" parent="UI/HUD/InventoryPanel/Margin/VBox" unique_id=357326645]
+layout_mode = 2
+
+[node name="Slot3" type="Button" parent="UI/HUD/InventoryPanel/Margin/VBox" unique_id=1081694130]
+layout_mode = 2
+
+[node name="Slot4" type="Button" parent="UI/HUD/InventoryPanel/Margin/VBox" unique_id=1863309797]
+layout_mode = 2
+
+[node name="Slot5" type="Button" parent="UI/HUD/InventoryPanel/Margin/VBox" unique_id=1067575205]
+layout_mode = 2
+
+[node name="Slot6" type="Button" parent="UI/HUD/InventoryPanel/Margin/VBox" unique_id=547613184]
+layout_mode = 2
+
+[node name="Slot7" type="Button" parent="UI/HUD/InventoryPanel/Margin/VBox" unique_id=2050126104]
+layout_mode = 2
+
+[node name="Slot8" type="Button" parent="UI/HUD/InventoryPanel/Margin/VBox" unique_id=2001556819]
+layout_mode = 2
+
+[node name="ReadPanel" type="Control" parent="UI" unique_id=1289695340]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="UI/ReadPanel" unique_id=723184185]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.039215688, 0.0627451, 0.16078432, 0.6745098)
+
+[node name="BottomBar" type="ColorRect" parent="UI/ReadPanel" unique_id=686151769]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -260.0
+color = Color(0.06666667, 0.06666667, 0.06666667, 0.8)
+
+[node name="Margin" type="MarginContainer" parent="UI/ReadPanel/BottomBar" unique_id=879063631]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="UI/ReadPanel/BottomBar/Margin" unique_id=612409409]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="UI/ReadPanel/BottomBar/Margin/VBox" unique_id=1697905965]
+layout_mode = 2
+text = "O Estudo"
+label_settings = SubResource("LabelSettings_grv7h")
+vertical_alignment = 1
+
+[node name="BodyText" type="RichTextLabel" parent="UI/ReadPanel/BottomBar/Margin/VBox" unique_id=1320039379]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.9019608, 0.8509804, 0.72156864, 1)
+theme_override_font_sizes/normal_font_size = 24
+scroll_active = false
+
+[node name="CloseHintLabel" type="Label" parent="UI/ReadPanel/BottomBar/Margin/VBox" unique_id=535976837]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72156864, 0.72156864, 0.72156864, 1)
+text = "Esc / Clique para fechar"
+horizontal_alignment = 2
+
+[node name="RavenRitualPanel" type="Control" parent="UI" unique_id=1144180882]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 86.0
+
+[node name="Background" type="ColorRect" parent="UI/RavenRitualPanel" unique_id=1386565129]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 86.0
+
+[node name="BottomBar" type="PanelContainer" parent="UI/RavenRitualPanel" unique_id=1854238039]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Margin" type="MarginContainer" parent="UI/RavenRitualPanel/BottomBar" unique_id=1334483602]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="UI/RavenRitualPanel/BottomBar/Margin" unique_id=1683217002]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="UI/RavenRitualPanel/BottomBar/Margin/VBox" unique_id=1599727734]
+layout_mode = 2
+
+[node name="PromptLabel" type="Label" parent="UI/RavenRitualPanel/BottomBar/Margin/VBox" unique_id=1507778824]
+layout_mode = 2
+
+[node name="OptionsRow" type="HBoxContainer" parent="UI/RavenRitualPanel/BottomBar/Margin/VBox" unique_id=1658020673]
+layout_mode = 2
+
+[node name="OptionButton1" type="Button" parent="UI/RavenRitualPanel/BottomBar/Margin/VBox/OptionsRow" unique_id=1859400367]
+layout_mode = 2
+
+[node name="OptionButton2" type="Button" parent="UI/RavenRitualPanel/BottomBar/Margin/VBox/OptionsRow" unique_id=730764116]
+layout_mode = 2
+
+[node name="OptionButton3" type="Button" parent="UI/RavenRitualPanel/BottomBar/Margin/VBox/OptionsRow" unique_id=771290799]
+layout_mode = 2
+
+[node name="EndGamePanel" type="Control" parent="UI" unique_id=253083822]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FadeRect" type="ColorRect" parent="UI/EndGamePanel" unique_id=1193701087]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Center" type="CenterContainer" parent="UI/EndGamePanel" unique_id=1642090665]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBox" type="VBoxContainer" parent="UI/EndGamePanel/Center" unique_id=1825327221]
+layout_mode = 2
+
+[node name="EndTitle" type="Label" parent="UI/EndGamePanel/Center/VBox" unique_id=1855425320]
+layout_mode = 2
+
+[node name="EndSubtitle" type="Label" parent="UI/EndGamePanel/Center/VBox" unique_id=1845066863]
+layout_mode = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1718421966]
+environment = SubResource("Environment_8dhb5")
