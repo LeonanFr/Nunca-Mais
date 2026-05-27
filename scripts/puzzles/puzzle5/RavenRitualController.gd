@@ -119,15 +119,22 @@ func _on_option_pressed(option_index: int) -> void:
 	_show_raven_response()
 
 func _show_raven_response() -> void:
+	AudioManager.play_raven()
+
 	mode = RitualMode.RAVEN_RESPONSE
+
 	if title_label != null:
 		title_label.text = "Corvo:"
+
 	if prompt_label != null:
 		prompt_label.text = "Nunca mais."
+
 	for i in range(option_buttons.size()):
 		var button: Button = option_buttons[i]
+
 		if button == null:
 			continue
+
 		if i == 0:
 			button.visible = true
 			button.disabled = false
@@ -145,11 +152,15 @@ func _advance_after_raven_response() -> void:
 	_update_choice_ui()
 
 func _reset_after_error() -> void:
+	AudioManager.play_raven()
+
 	current_round = 0
 	is_open = false
 	mode = RitualMode.CHOOSING
+
 	if panel != null:
 		panel.visible = false
+
 	_set_world_input_blocked(false)
 	_show_feedback("A ave rejeita a pergunta.")
 

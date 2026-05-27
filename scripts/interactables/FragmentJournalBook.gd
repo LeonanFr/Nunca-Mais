@@ -46,12 +46,9 @@ func show_fragment(fragment_id: int, camera_rig = null) -> void:
 		push_warning("Fragmento inexistente: %s" % fragment_id)
 		return
 
-	print("")
-	print("=== ", data["title"], " ===")
-	print(data["text"])
-	print("")
-
 	get_tree().call_group("ui", "show_fragment", data["title"], data["text"])
+
+	AudioManager.play_fragment_narration(fragment_id)
 
 	GameState.read_fragment(fragment_id)
 

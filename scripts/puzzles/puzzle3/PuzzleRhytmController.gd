@@ -3,9 +3,18 @@ class_name PuzzleRhythmController
 
 signal puzzle3_solved
 
+enum RhythmSoundType {
+	BELL,
+	DOOR_KNOCK
+}
+
 @export var required_state: int = 3
 @export var target_sequence: Array[int] = [1, 3, 3, 2, 1]
 
+@export_group("Som")
+@export var rhythm_sound_type: RhythmSoundType = RhythmSoundType.BELL
+
+@export_group("Referências")
 @export var fragment_paper: Node3D
 @export var door_group: StringName = &"puzzle3_door"
 
@@ -38,12 +47,21 @@ func submit_rhythm_value(value: int) -> void:
 		_show_feedback("A porta já cedeu ao ritmo.")
 		return
 
+	AudioManager.play_bell_count(value)
+
 	current_sequence.append(value)
 
 	_show_feedback(_get_sequence_feedback())
 
 	if current_sequence.size() >= target_sequence.size():
 		_validate_sequence()
+
+func _play_rhythm_sound(value: int) -> void:
+	match rhythm_sound_type:
+		RhythmSoundType.BELL:
+			AudioManager.play_bell_count(value)
+		RhythmSoundType.DOOR_KNOCK:
+			AudioManager.play_door_knock_count(value)
 
 func _validate_sequence() -> void:
 	if current_sequence == target_sequence:
@@ -89,7 +107,7 @@ func _release_fragment() -> void:
 
 	if fragment_paper.has_method("set_available"):
 		fragment_paper.set_available(true)
-		
+
 func _connect_fragment_signal() -> void:
 	if fragment_paper == null:
 		return
@@ -99,7 +117,6 @@ func _connect_fragment_signal() -> void:
 
 	if not fragment_paper.fragment_collected.is_connected(_on_fragment_collected):
 		fragment_paper.fragment_collected.connect(_on_fragment_collected)
-
 
 func _on_fragment_collected(collected_fragment_id: int) -> void:
 	if collected_fragment_id != 4:

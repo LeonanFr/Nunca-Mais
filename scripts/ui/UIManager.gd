@@ -1,5 +1,10 @@
 extends CanvasLayer
 
+@onready var start_panel: Control = $StartPanel
+@onready var start_background: TextureRect = $StartPanel/Background
+@onready var start_button: Button = $StartPanel/StartButton
+@onready var start_overlay: ColorRect = $StartPanel/Overlay
+
 @onready var hud: Control = $HUD
 @onready var hud_margin: MarginContainer = $HUD/TopLeftMargin
 @onready var hud_vbox: VBoxContainer = $HUD/TopLeftMargin/VBox
@@ -30,6 +35,9 @@ extends CanvasLayer
 @onready var end_title: Label = $EndGamePanel/Center/VBox/EndTitle
 @onready var end_subtitle: Label = $EndGamePanel/Center/VBox/EndSubtitle
 
+var start_screen_open: bool = true
+var endgame_tween: Tween = null
+
 var inventory_slots: Array[Button] = []
 
 var modal_open: bool = false
@@ -44,14 +52,23 @@ func _ready() -> void:
 	_cache_inventory_slots()
 	_apply_visual_style()
 	_configure_inventory_mouse_filter()
+	_configure_start_screen_mouse_filter()
+	_connect_start_screen()
 	_connect_inventory_slots()
 	_render_inventory()
+
+	start_screen_open = true
+	start_panel.visible = true
+	hud.visible = false
 
 	read_panel.visible = false
 	end_game_panel.visible = false
 	feedback_label.text = ""
 	pending_fragment_label.text = ""
 	close_hint_label.text = "Esc / Clique para fechar"
+
+	if GameState.has_method("lock_gameplay_input"):
+		GameState.lock_gameplay_input()
 
 	GameState.objective_changed.connect(_on_objective_changed)
 	GameState.fragment_collected.connect(_on_fragment_inventory_changed)
@@ -110,7 +127,7 @@ func set_modal_open(value: bool) -> void:
 	modal_open = value
 
 func blocks_world_input() -> bool:
-	return reading_open or modal_open or ending_open
+	return start_screen_open or reading_open or modal_open or ending_open
 
 func update_pending_fragment_label() -> void:
 	var selected_item: Dictionary = GameState.get_selected_inventory_item_data()
@@ -145,6 +162,46 @@ func _cache_inventory_slots() -> void:
 	inventory_slots.append($HUD/InventoryPanel/Margin/VBox/Slot6)
 	inventory_slots.append($HUD/InventoryPanel/Margin/VBox/Slot7)
 	inventory_slots.append($HUD/InventoryPanel/Margin/VBox/Slot8)
+
+func _connect_start_screen() -> void:
+	if start_button == null:
+		push_warning("StartButton não encontrado.")
+		return
+
+	if not start_button.pressed.is_connected(_on_start_button_pressed):
+		start_button.pressed.connect(_on_start_button_pressed)
+
+func _configure_start_screen_mouse_filter() -> void:
+	if start_panel != null:
+		start_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+		start_panel.z_index = 100
+
+	if start_background != null:
+		start_background.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	if start_overlay != null:
+		start_overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	if start_button != null:
+		start_button.mouse_filter = Control.MOUSE_FILTER_STOP
+		start_button.focus_mode = Control.FOCUS_NONE
+
+func _on_start_button_pressed() -> void:
+	if not start_screen_open:
+		return
+
+	start_screen_open = false
+	modal_open = false
+	reading_open = false
+	ending_open = false
+
+	start_panel.visible = false
+	hud.visible = true
+
+	if GameState.has_method("unlock_gameplay_input"):
+		GameState.unlock_gameplay_input()
+
+	AudioManager.start_ambient()
 
 func _apply_visual_style() -> void:
 	background.color = Color(0.0, 0.0, 0.0, 0.28)
@@ -282,6 +339,7 @@ func _apply_visual_style() -> void:
 	close_hint_label.custom_minimum_size = Vector2(0.0, 32.0)
 	close_hint_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	
+	_apply_start_screen_style()
 	_apply_endgame_style()
 
 func _apply_inventory_slot_style() -> void:
@@ -504,20 +562,33 @@ func _apply_inventory_panel_style() -> void:
 	inventory_panel.add_theme_stylebox_override("panel", panel_style)
 
 func start_endgame_sequence() -> void:
+	start_endgame_sequence_with_duration(3.0)
+
+func start_endgame_sequence_with_duration(final_duration: float) -> void:
 	if ending_open:
 		return
 
 	ending_open = true
 	modal_open = true
 	reading_open = false
+	start_screen_open = false
 
 	hud.visible = false
+	start_panel.visible = false
+
 	if feedback_tween != null:
 		feedback_tween.kill()
 		feedback_tween = null
+
+	if endgame_tween != null:
+		endgame_tween.kill()
+		endgame_tween = null
+
 	read_panel.visible = false
 
 	end_game_panel.visible = true
+	end_game_panel.z_index = 200
+
 	end_fade_rect.modulate.a = 0.0
 
 	end_title.visible = false
@@ -527,26 +598,97 @@ func start_endgame_sequence() -> void:
 	end_title.modulate.a = 0.0
 	end_subtitle.modulate.a = 0.0
 
-	var tween := create_tween()
+	var fade_duration: float = max(final_duration, 3.0)
 
-	tween.tween_property(end_fade_rect, "modulate:a", 0.86, 0.18)
-	tween.tween_interval(0.10)
-	tween.tween_property(end_fade_rect, "modulate:a", 0.18, 0.16)
-	tween.tween_interval(0.12)
-	tween.tween_property(end_fade_rect, "modulate:a", 0.94, 0.22)
-	tween.tween_interval(0.14)
-	tween.tween_property(end_fade_rect, "modulate:a", 0.34, 0.20)
-	tween.tween_interval(0.18)
-	tween.tween_property(end_fade_rect, "modulate:a", 1.0, 0.75)
+	endgame_tween = create_tween()
+	endgame_tween.tween_property(end_fade_rect, "modulate:a", 1.0, fade_duration)
+	endgame_tween.tween_callback(_show_endgame_text)
 
-	tween.tween_callback(_show_endgame_text)
-	
 func _show_endgame_text() -> void:
+	AudioManager.play_final_nevermore()
+
 	end_title.visible = true
 	end_subtitle.visible = false
 
 	var text_tween := create_tween()
 	text_tween.tween_property(end_title, "modulate:a", 1.0, 1.0)
+
+func _apply_start_screen_style() -> void:
+	if start_panel == null:
+		return
+
+	start_panel.anchor_left = 0.0
+	start_panel.anchor_top = 0.0
+	start_panel.anchor_right = 1.0
+	start_panel.anchor_bottom = 1.0
+	start_panel.offset_left = 0.0
+	start_panel.offset_top = 0.0
+	start_panel.offset_right = 0.0
+	start_panel.offset_bottom = 0.0
+	start_panel.z_index = 100
+
+	if start_background != null:
+		start_background.anchor_left = 0.0
+		start_background.anchor_top = 0.0
+		start_background.anchor_right = 1.0
+		start_background.anchor_bottom = 1.0
+		start_background.offset_left = 0.0
+		start_background.offset_top = 0.0
+		start_background.offset_right = 0.0
+		start_background.offset_bottom = 0.0
+		start_background.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		start_background.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+
+	if start_overlay != null:
+		start_overlay.anchor_left = 0.0
+		start_overlay.anchor_top = 0.0
+		start_overlay.anchor_right = 1.0
+		start_overlay.anchor_bottom = 1.0
+		start_overlay.offset_left = 0.0
+		start_overlay.offset_top = 0.0
+		start_overlay.offset_right = 0.0
+		start_overlay.offset_bottom = 0.0
+		start_overlay.color = Color(0.0, 0.0, 0.0, 0.42)
+
+	if start_button != null:
+		start_button.text = "Jogar"
+		start_button.anchor_left = 0.5
+		start_button.anchor_top = 1.0
+		start_button.anchor_right = 0.5
+		start_button.anchor_bottom = 1.0
+		start_button.offset_left = -220.0
+		start_button.offset_top = -190.0
+		start_button.offset_right = 220.0
+		start_button.offset_bottom = -86.0
+		start_button.custom_minimum_size = Vector2(440.0, 104.0)
+
+		start_button.add_theme_font_size_override("font_size", 42)
+		start_button.add_theme_color_override("font_color", Color("#F5E7BF"))
+		start_button.add_theme_color_override("font_hover_color", Color("#FFF4CF"))
+		start_button.add_theme_color_override("font_pressed_color", Color("#FFFFFF"))
+
+		var normal_style := StyleBoxFlat.new()
+		normal_style.bg_color = Color(0.03, 0.025, 0.02, 0.92)
+		normal_style.border_color = Color("#D8C58A")
+		normal_style.set_border_width_all(3)
+		normal_style.set_corner_radius_all(10)
+		normal_style.content_margin_left = 20
+		normal_style.content_margin_right = 20
+		normal_style.content_margin_top = 12
+		normal_style.content_margin_bottom = 12
+
+		var hover_style := normal_style.duplicate(true) as StyleBoxFlat
+		hover_style.bg_color = Color(0.16, 0.13, 0.09, 0.98)
+		hover_style.border_color = Color("#FFF2C7")
+
+		var pressed_style := normal_style.duplicate(true) as StyleBoxFlat
+		pressed_style.bg_color = Color(0.24, 0.18, 0.10, 1.0)
+		pressed_style.border_color = Color("#FFFFFF")
+
+		start_button.add_theme_stylebox_override("normal", normal_style)
+		start_button.add_theme_stylebox_override("hover", hover_style)
+		start_button.add_theme_stylebox_override("pressed", pressed_style)
+		start_button.add_theme_stylebox_override("focus", hover_style)
 
 func _apply_endgame_style() -> void:
 	end_game_panel.anchor_left = 0.0

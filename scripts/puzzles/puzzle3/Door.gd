@@ -80,6 +80,7 @@ func show_darkness_feedback() -> void:
 
 func interact_closed_door() -> void:
 	if GameState.puzzle_state == 3 and not puzzle_solved:
+		AudioManager.play_door_knock_sequence([1, 3, 3, 2, 1])
 		_show_feedback("Perdoai, senhora, ou meu senhor, se há muito aí fora me esperais;")
 		return
 

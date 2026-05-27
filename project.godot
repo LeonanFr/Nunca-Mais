@@ -19,6 +19,7 @@ config/windows_native_icon="res://assets/textures/raven.ico"
 [autoload]
 
 GameState="*uid://d2s0i0mg2csg7"
+AudioManager="*uid://dy4qhd6n7qi6l"
 
 [display]
 

@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dy4qhd6n7qi6l"]
+
+[ext_resource type="Script" uid="uid://dka5aigckd6qr" path="res://scripts/audio/audio_manager.gd" id="1_r1srg"]
+[ext_resource type="AudioStream" uid="uid://bkjfp2qnyhfr2" path="res://assets/audio/ambient/ambient_music.ogg" id="2_tv3b6"]
+[ext_resource type="AudioStream" uid="uid://bdtiojoh32p3q" path="res://assets/audio/ambient/rain_loop.ogg" id="3_yg0am"]
+[ext_resource type="AudioStream" uid="uid://dyvnxrc64eiom" path="res://assets/audio/narration/fragment_01.ogg" id="4_r174t"]
+[ext_resource type="AudioStream" uid="uid://cco36v46470ib" path="res://assets/audio/sfx/raven.ogg" id="4_yg0am"]
+[ext_resource type="AudioStream" uid="uid://qsyjlfxxjmmq" path="res://assets/audio/narration/fragment_02.ogg" id="5_g1n41"]
+[ext_resource type="AudioStream" uid="uid://b7ou4vdg4v2tp" path="res://assets/audio/sfx/door_knock.ogg" id="5_qw11x"]
+[ext_resource type="AudioStream" uid="uid://csspemmir1vlu" path="res://assets/audio/narration/fragment_03.ogg" id="6_7speq"]
+[ext_resource type="AudioStream" uid="uid://dpwxt1kmfcpvq" path="res://assets/audio/sfx/bell.ogg" id="6_isk6y"]
+[ext_resource type="AudioStream" uid="uid://b0ih8ks1ssibi" path="res://assets/audio/narration/fragment_04.ogg" id="7_ah1rr"]
+[ext_resource type="AudioStream" uid="uid://chjog30e5wdg2" path="res://assets/audio/narration/fragment_05.ogg" id="8_exrf6"]
+[ext_resource type="AudioStream" uid="uid://dteqqpcm00h72" path="res://assets/audio/narration/final_poem.ogg" id="12_hhuud"]
+[ext_resource type="AudioStream" uid="uid://qydph7bb4sfa" path="res://assets/audio/narration/final_nevermore.ogg" id="13_p71v7"]
+
+[node name="AudioManager" type="Node3D" unique_id=892214408]
+script = ExtResource("1_r1srg")
+ambient_music = ExtResource("2_tv3b6")
+rain_loop = ExtResource("3_yg0am")
+ambient_music_volume_db = -20.0
+rain_volume_db = -16.0
+fragment_narrations = Array[AudioStream]([ExtResource("4_r174t"), ExtResource("5_g1n41"), ExtResource("6_7speq"), ExtResource("7_ah1rr"), ExtResource("8_exrf6")])
+poem_volume_db = 10.0
+raven_sound = ExtResource("4_yg0am")
+raven_volume_db = 1.0
+door_knock_sound = ExtResource("5_qw11x")
+bell_sound = ExtResource("6_isk6y")
+final_narration = ExtResource("12_hhuud")
+final_nevermore = ExtResource("13_p71v7")
+final_narration_volume_db = 10.0
+final_nevermore_volume_db = 10.0
+
+[node name="AmbientMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1480534402]
+
+[node name="RainPlayer" type="AudioStreamPlayer" parent="." unique_id=970230741]
+
+[node name="PoemNarrationPlayer" type="AudioStreamPlayer" parent="." unique_id=1434421774]
+
+[node name="RavenPlayer" type="AudioStreamPlayer" parent="." unique_id=437492698]
+
+[node name="DoorKnockPlayer" type="AudioStreamPlayer" parent="." unique_id=1674247624]
+
+[node name="FinalNarrationPlayer" type="AudioStreamPlayer" parent="." unique_id=2032256477]
+
+[node name="FinalNevermorePlayer" type="AudioStreamPlayer" parent="." unique_id=1272026540]
